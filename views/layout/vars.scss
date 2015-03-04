@@ -1,0 +1,227 @@
+$helvetica-neue: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$z-layers: (
+	bottom	: -9999999999,
+ 	default	: 1,
+	menu	: 100,
+	overlay	: 200,
+	modal	: 201,
+	top		: 9999999999,
+);
+
+$breakpoints: (
+	small	: 767px,
+	medium	: 992px,
+	large	: 1200px,
+);
+
+
+
+$default-font-size: 16px;
+
+$max-body-width: 320px;
+
+// Colors
+$link-color: rgb(102, 172, 255);
+$text-color: rgb(0, 0, 0);
+$background-color: rgb(209, 209, 209);
+$lazard-blue: rgb(34, 40, 60);
+$secondary-grey: rgb(146, 146, 146);
+
+$styleguide: (
+
+	h1: (
+		color			: $text-color,
+		font-size		: 24px,
+		line-height		: 16px,
+		font-weight 	: 200,
+	),
+
+	h2: (
+		color			: $text-color,
+		font-size		: 24px,
+		font-weight 	: 200,
+		font-style 		: italic,
+	),
+
+	h3: (
+		color			: $text-color,
+		font-size		: 14px,
+		font-weight 	: 500,
+	),
+
+	h4: (
+		color 			: $text-color,
+		font-size 		: 14px,
+		font-weight 	: 600,
+	),
+
+	h5: (
+		color 			: $text-color,
+		font-size 		: 8px,
+	),
+
+	h6: (
+		color 			: $text-color,
+		font-size 		: 6px,
+	),
+
+	body-text: (
+		color 			: $text-color,
+		font-size 		: 14px,
+		line-height 	: 24px,
+	),
+
+	hyperlink: (
+		color 			: $link-color,
+		text-decoration : none,
+		font-size 		: 14px,
+		line-height 	: 24px,
+	),
+
+	external-link: (
+		color 			: $link-color,
+		text-decoration : none,
+	),
+
+	headline-internal-link: (
+		color 			: $link-color,
+		text-decoration : none,
+		font-weight  	: 400,
+	),
+
+	headline-external-link: (
+		color 			: $link-color,
+		text-decoration : none,
+		font-weight 	: 400,
+	),
+
+	ul: (
+		list-style 		: disc outside none,
+		padding-left 	: 10px,
+	),
+
+	ol: (
+		list-style-type : decimal outside none,
+	),
+
+	// li inside of uls
+	ul-li: (
+		padding 		: 5px 0,
+	),
+
+		ul-li-level2: (
+
+
+		),
+
+			ul-li-level3: (
+
+
+			),
+
+	// li inside of ols
+	ol-li: (
+
+
+	),
+
+		ol-li-level2: (
+
+
+		),
+
+			ol-li-level3: (
+
+
+			),
+
+	table: (
+		display: table,
+	),
+
+	table-row: (
+		display: table-row,
+	),
+
+	table-cell: (
+		display: table-cell,
+	),
+
+	button: (
+
+	),
+
+	button-hover: (
+
+	),
+
+	button-active: (
+
+	),
+
+	input: (
+
+	),
+
+		input-hover: (
+
+		),
+
+		input-active: (
+
+		),
+
+
+	primary-button: (
+		background-color: $lazard-blue,
+		height: 40px,
+		line-height: 40px,
+		vertical-align: middle,
+		color: rgb(255, 255, 255),
+		width: 70%,
+		margin: 0 auto,
+		text-align: center,
+	),
+
+	phone-button: (
+		background-color: $lazard-blue,
+		height: 40px,
+		line-height: 40px,
+		vertical-align: middle,
+		color: rgb(255, 255, 255),
+		width: 80%,
+		margin: 0 auto,
+		text-align: center,
+	),
+
+	wide-button: (
+		background-color 	: $lazard-blue,
+		height 				: 40px,
+		line-height 		: 40px,
+		vertical-align 		: middle,
+		color 				: rgb(255, 255, 255),
+		text-align 			: center,
+		width 				: 90%,
+		margin 				: 0 auto,
+	),
+
+	highlight-button: (
+	),
+
+	regular-butotn: (
+	),
+
+	category-filter-button-active: (
+	),
+
+	category-filter-button-inactive: (
+	),
+
+	tab-button: (
+	),
+
+	dropdown-button: (
+	),
+
+);

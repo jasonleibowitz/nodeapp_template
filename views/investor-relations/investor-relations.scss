@@ -1,0 +1,106 @@
+[screen=investor-relations] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+}
+
+.module[type=stock-price] {
+
+	.datetime {
+		@include font-size(12px);
+		padding-bottom: 5px;
+	}
+
+	.ticker-name {
+		@include font-size(24px);
+		padding-bottom: 30px;
+	}
+
+	.stock-price {
+		padding-bottom: 15px;
+
+		.current-price {
+			@include font-size(55px);
+			display: inline;
+			font-weight: 600;
+		}
+
+		.change {
+			display: inline;
+		}
+	}
+
+	.high {
+		padding-bottom: 3px;
+	}
+
+	.daily-record {
+		@include font-size(12px);
+	}
+}
+
+.module[type=investor-kit] {
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.investor-kit-wrap {
+		padding: 25px 20px;
+	}
+}
+
+.module[type=announcements] {
+	padding: 10px;
+
+	.title {
+		padding: 0 0 25px;
+	}
+
+	.announcement-wrap {
+		border: 1px solid rgb(212, 212, 212);
+		padding: 10px;
+	}
+
+	.announcement-wrap:not(:last-of-type) {
+		margin-bottom: 10px;
+	}
+
+	.date {
+		@include font-size(14px);
+		font-style: italic;
+		padding-bottom: 5px;
+	}
+
+	.exceprt {
+		@include font-size(12px);
+		line-height: 14px;
+	}
+}

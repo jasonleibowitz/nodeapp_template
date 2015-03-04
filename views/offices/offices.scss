@@ -1,0 +1,116 @@
+[screen=offices] {
+	header {
+		padding-top: 60px;
+
+		.header-image {
+			@include size(100%, 102px);
+			position: relative;
+			background-image: url('/images/offices-header.png');
+			background-repeat: no-repeat;
+			background-size: 340px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			padding: 20px 5px;
+		}
+	}
+}
+
+
+.office-page {
+
+	.offices-header {
+
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: rgb(255, 255, 255);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: rgb(255, 255, 255);
+		}
+	}
+
+}
+
+.module[type=office-list] {
+	ul {
+		color: $link-color;
+		padding: 0 20px;
+		line-height: 36px;
+	}
+}
+
+.module[type=office-contact] {
+
+	.city {
+		@include font-size(20px);
+		text-align: center;
+		padding: 20px 0;
+	}
+
+	.contact-wrap {
+		padding: 5px 20px;
+
+		.title {
+			text-align: left;
+			padding: 0;
+
+			&:after {
+				@include size(20px);
+				content: '';
+				display: inline-block;
+				background-image: url('/images/external_link.png');
+				background-repeat: no-repeat;
+				background-size: 20px;
+				vertical-align: middle;
+				margin-left: 5px;
+			}
+		}
+
+		.address {
+			padding-bottom: 10px;
+			font-weight: 200;
+		}
+	}
+
+	.get-directions {
+		@include font-size(18px);
+		font-weight: 300;
+		background: none;
+		border: none;
+		padding-bottom: 20px;
+		padding-left: 0;
+
+		&:before {
+			content: '';
+			background-image: url('/images/directions-pin.png');
+			background-repeat: no-repeat;
+			background-size: 20px;
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			padding-right: 3px;
+		}
+	}
+
+	.contact-wrap:last-of-type {
+		padding-bottom: 20px;
+	}
+
+	.phone-button {
+		margin-left: 0;
+	}
+}

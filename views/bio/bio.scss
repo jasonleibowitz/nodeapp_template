@@ -1,0 +1,116 @@
+[screen=bio] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+}
+
+.module[type=bio-page] {
+	padding-top: 40px;
+
+	.headshot-wrap {
+		@include size(160px, 120px);
+		overflow: hidden;
+		margin: 0 auto;
+	}
+
+	.headline {
+
+		.name {
+			@include font-size(19px);
+			color: color(rgb(112, 149, 169), 1);
+			margin: 10px 0;
+			text-align: center;
+			font-weight: 200;
+		}
+
+		.position {
+			@include font-size(14px);
+			text-align: center;
+			margin-bottom: 20px;
+			font-style: italic;
+		}
+	}
+
+	.stats {
+		@include font-size(14px);
+		padding: 0 20px 20px;
+
+		.label {
+			color: rgb(163, 163, 163);
+			text-transform: uppercase;
+			margin-top: 15px;
+		}
+
+		.data {
+			line-height: 16px;
+
+			.last {
+				padding-bottom: 20px;
+			}
+		}
+	}
+
+	.contact {
+		padding: 20px;
+		text-align: center;
+
+		.title {
+			text-align: left;
+			padding: 0 0 20px;
+		}
+
+		.email a {
+			@include font-size(15px);
+			color: rgb(112, 149, 169);
+			text-decoration: none;
+		}
+	}
+
+	.bio-text {
+		padding: 20px;
+
+		.title {
+			padding: 0 20px;
+			text-align: left;
+		}
+
+		.bio-highlight-wrap {
+			padding: 50px 30px;
+			background-image: url('../images/quote_overlay.png');
+			background-repeat: no-repeat;
+			background-position: -4px -25px;
+			background-size: 122px;
+		}
+
+		.bio-highlight-text {
+			@include font-size(20px);
+			color: rgb(112, 149, 169);
+		}
+	}
+}

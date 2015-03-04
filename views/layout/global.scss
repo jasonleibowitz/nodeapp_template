@@ -1,0 +1,281 @@
+// * * * Imports * * *
+@import "mixins";
+@import "reset";
+@import "vars";
+
+// # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # VARIABLES # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # #
+
+// Config. Consuela says "noooo nooo... no touch"
+$root-font-size		: 10px;
+$default-font-size	: 16px;
+
+
+
+// Utility Classes
+.hide {
+	display: none;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+.clear {
+	@include clearfix();
+}
+
+.hide-children {
+	@include hide-children();
+}
+
+// # # # # # # # # NAV BAR # # # # # # # # #
+
+
+.navbar {
+	@include z-index(top);
+	@include bg-color(white(), .8);
+	position: fixed;
+	height: 50px;
+	line-height: 50px;
+	vertical-align: middle;
+	width: 100%;
+	text-align: center;
+
+	.hamburger {
+		@include size(50px);
+		background-image: url('/images/hamburger_menu.png');
+		background-repeat: no-repeat;
+		background-size: 50px;
+		position: absolute;
+		top: 10px;
+	}
+
+	.headline-text {
+		@include style(h1, color, font-size, font-weight);
+	}
+
+	.search-icon {
+		@include size(40px);
+		background-image: url('/images/search.png');
+		background-repeat: no-repeat;
+		background-size: 40px;
+		position: absolute;
+		top: 10px;
+		right: 0;
+	}
+}
+
+// # # # # # # # # FOOTER # # # # # # # # #
+
+footer {
+	@include size(100%, 200px);
+	background-color: $lazard-blue;
+	color: white(1);
+	line-height: 200px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+// # # # # # # # # MAIN STYLES # # # # # # # # #
+body,
+.navbar {
+	max-width: $max-body-width;
+}
+
+html {
+	font-size: #{$root-font-size / $default-font-size * 100 + '%'};	// 10px / 16px
+	line-height: 100%;												// 10px
+}
+
+body {
+	@include font-size(16px);
+	@include line-height(16px);
+	font-family: $helvetica-neue;
+}
+
+h1 {
+	@include style(h1, all);
+}
+
+h2 {
+	@include style(h2, all);
+}
+
+h3 {
+	@include style(h3, all);
+}
+
+h4 {
+	@include style(h4, all);
+}
+
+p {
+	@include style(body-text, all);
+}
+
+p:not(:first-of-type) {
+	padding-top: 20px;
+}
+
+a {
+	@include style(hyperlink, all);
+}
+
+ul {
+	@include style(ul, all);
+
+	> li {
+		@include style(ul-li, all);
+	}
+}
+
+// # # # # # # # # GLOBAL STYLES # # # # # # # # #
+.module {
+	@include bg-color(white(), 1);
+	margin: 0 10px 10px;
+
+	.title {
+		text-align: center;
+		padding: 25px 0 0;
+		line-height: 29px;
+	}
+
+	.content {
+		padding: 20px;
+	}
+}
+
+hr {
+	border-color: color(rgb(236, 236, 236), 1);
+	border-style: solid;
+
+	.partial {
+		width: 90%;
+	}
+}
+
+.module[type=contacts] {
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.contact-wrap {
+		padding: 25px 20px;
+	}
+
+	.name {
+		font-weight: 500;
+		margin-bottom: 4px;
+	}
+
+	.contact-title {
+		@include font-size(14px);
+		font-weight: 200;
+		margin-bottom: 8px;
+		color: rgb(179, 179, 179);
+	}
+
+	.phone {
+		@include font-size(14px);
+		margin-bottom: 8px;
+
+		.phone-number {
+			padding-right: 5px;
+		}
+
+		.label {
+			@include font-size(12px);
+			color: rgb(179, 179, 179);
+			text-transform: uppercase;
+		}
+	}
+}
+
+.module[type="news"] {
+	padding-bottom: 25px;
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.news-wrap {
+		padding: 20px;
+
+		.icon {
+			@include size(50px);
+			display: inline-block;
+			background: url('/images/pdf-icon.png');
+			background-repeat: no-repeat;
+			background-size: 50px;
+			float: left;
+			margin-right: 15px;
+		}
+
+		.news-item {
+			display: inline;
+
+			.news-title {
+				@include font-size(14px);
+				line-height: 15px;
+			}
+
+			.detail {
+				@include font-size(12px);
+				color: $secondary-grey;
+				text-transform: uppercase;
+				display: inline;
+			}
+
+			.type {
+				display: inline;
+			}
+
+			.date {
+				display: inline;
+			}
+		}
+
+	}
+}
+
+// BUTTONS
+
+.button {
+	@include style(primary-button, all);
+}
+
+.wide-button {
+	@include style(wide-button, all);
+}
+
+.phone-button {
+	@include style(phone-button, background-color, height, line-height, vertical-align, color, width, text-align);
+	padding: 0 20px;
+	margin-left: 20px;
+	text-align: left;
+
+	&:before {
+		@include size(30px);
+		background-image: url('/images/phone_icon.png');
+		content: '';
+		background-size: 30px;
+		background-repeat: no-repeat;
+		display: inline-block;
+		line-height: 40px;
+		vertical-align: middle;
+		margin-left: 0;
+	}
+}
+
+
+// Print
+@media print {
+	a:after {
+		content: " [" attr(href) "] "; // Show URLs
+	}
+}

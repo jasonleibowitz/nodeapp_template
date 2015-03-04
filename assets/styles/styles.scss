@@ -1,0 +1,993 @@
+// * * * Imports * * *
+@import "mixins";
+@import "reset";
+@import "vars";
+
+// # # # # # # # # # # # # # # # # # # # # # # # #
+// # # # # # # # # # VARIABLES # # # # # # # # # #
+// # # # # # # # # # # # # # # # # # # # # # # # #
+
+// Config. Consuela says "noooo nooo... no touch"
+$root-font-size		: 10px;
+$default-font-size	: 16px;
+
+
+
+// Utility Classes
+.hide {
+	display: none;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+.clear {
+	@include clearfix();
+}
+
+.hide-children {
+	@include hide-children();
+}
+
+// # # # # # # # # NAV BAR # # # # # # # # #
+
+
+.navbar {
+	@include z-index(top);
+	@include bg-color(white(), .8);
+	position: fixed;
+	height: 50px;
+	line-height: 50px;
+	vertical-align: middle;
+	width: 100%;
+	text-align: center;
+
+	.hamburger {
+		@include size(50px);
+		background-image: url('/images/hamburger_menu.png');
+		background-repeat: no-repeat;
+		background-size: 50px;
+		position: absolute;
+		top: 10px;
+	}
+
+	.headline-text {
+		@include style(h1, color, font-size, font-weight);
+	}
+
+	.search-icon {
+		@include size(40px);
+		background-image: url('/images/search.png');
+		background-repeat: no-repeat;
+		background-size: 40px;
+		position: absolute;
+		top: 10px;
+		right: 0;
+	}
+}
+
+// # # # # # # # # FOOTER # # # # # # # # #
+
+footer {
+	@include size(100%, 200px);
+	background-color: $lazard-blue;
+	color: white(1);
+	line-height: 200px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+// # # # # # # # # MAIN STYLES # # # # # # # # #
+body,
+.navbar {
+	max-width: $max-body-width;
+}
+
+html {
+	font-size: #{$root-font-size / $default-font-size * 100 + '%'};	// 10px / 16px
+	line-height: 100%;												// 10px
+}
+
+body {
+	@include font-size(16px);
+	@include line-height(16px);
+	font-family: $helvetica-neue;
+}
+
+h1 {
+	@include style(h1, all);
+}
+
+h2 {
+	@include style(h2, all);
+}
+
+h3 {
+	@include style(h3, all);
+}
+
+h4 {
+	@include style(h4, all);
+}
+
+p {
+	@include style(body-text, all);
+}
+
+p:not(:first-of-type) {
+	padding-top: 20px;
+}
+
+a {
+	@include style(hyperlink, all);
+}
+
+ul {
+	@include style(ul, all);
+
+	> li {
+		@include style(ul-li, all);
+	}
+}
+
+// # # # # # # # # GLOBAL STYLES # # # # # # # # #
+.module {
+	@include bg-color(white(), 1);
+	margin: 0 10px 10px;
+
+	.title {
+		text-align: center;
+		padding: 25px 0 0;
+		line-height: 29px;
+	}
+
+	.content {
+		padding: 20px;
+	}
+}
+
+hr {
+	border-color: color(rgb(236, 236, 236), 1);
+	border-style: solid;
+
+	.partial {
+		width: 90%;
+	}
+}
+
+.module[type=contacts] {
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.contact-wrap {
+		padding: 25px 20px;
+	}
+
+	.name {
+		font-weight: 500;
+		margin-bottom: 4px;
+	}
+
+	.contact-title {
+		@include font-size(14px);
+		font-weight: 200;
+		margin-bottom: 8px;
+		color: rgb(179, 179, 179);
+	}
+
+	.phone {
+		@include font-size(14px);
+		margin-bottom: 8px;
+
+		.phone-number {
+			padding-right: 5px;
+		}
+
+		.label {
+			@include font-size(12px);
+			color: rgb(179, 179, 179);
+			text-transform: uppercase;
+		}
+	}
+}
+
+.module[type="news"] {
+	padding-bottom: 25px;
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.news-wrap {
+		padding: 20px;
+
+		.icon {
+			@include size(50px);
+			display: inline-block;
+			background: url('/images/pdf-icon.png');
+			background-repeat: no-repeat;
+			background-size: 50px;
+			float: left;
+			margin-right: 15px;
+		}
+
+		.news-item {
+			display: inline;
+
+			.news-title {
+				@include font-size(14px);
+				line-height: 15px;
+			}
+
+			.detail {
+				@include font-size(12px);
+				color: $secondary-grey;
+				text-transform: uppercase;
+				display: inline;
+			}
+
+			.type {
+				display: inline;
+			}
+
+			.date {
+				display: inline;
+			}
+		}
+
+	}
+}
+
+// BUTTONS
+
+.button {
+	@include style(primary-button, all);
+}
+
+.wide-button {
+	@include style(wide-button, all);
+}
+
+.phone-button {
+	@include style(phone-button, background-color, height, line-height, vertical-align, color, width, text-align);
+	padding: 0 20px;
+	margin-left: 20px;
+	text-align: left;
+
+	&:before {
+		@include size(30px);
+		background-image: url('/images/phone_icon.png');
+		content: '';
+		background-size: 30px;
+		background-repeat: no-repeat;
+		display: inline-block;
+		line-height: 40px;
+		vertical-align: middle;
+		margin-left: 0;
+	}
+}
+
+
+// Print
+@media print {
+	a:after {
+		content: " [" attr(href) "] "; // Show URLs
+	}
+}
+;[screen=home] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+}
+
+.main {
+	@include size(100%);
+	background-color: $background-color;
+	padding-top: 10px;
+}
+
+.module[type=about] {
+
+	.content {
+		text-align: center;
+	}
+}
+
+.module[type=directions] {
+
+	h4 {
+		padding: 5px 0;
+	}
+
+	.content p {
+		margin-bottom: 20px;
+	}
+
+	.address p {
+		text-align: center;
+		line-height: normal;
+		font-weight: 200;
+		margin-bottom: 0;
+	}
+}
+
+.module[type=bio] {
+
+	.name {
+		@include font-size(19px);
+		margin: 10px 0;
+		text-align: center;
+		color: rgb(112, 149, 169);
+		font-weight: 200;
+	}
+
+	.position {
+		@include font-size(14px);
+		text-align: center;
+		margin-bottom: 20px;
+		font-style: italic;
+	}
+
+	.headshot-wrap {
+		@include size(125px);
+		border-radius: 50%;
+		margin: 25px auto;
+		overflow: hidden;
+	}
+
+	.content {
+		text-align: center;
+	}
+}
+
+.module[type=featured-jobs] {
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.featured-job-wrap {
+		line-height: 16px;
+		margin-bottom: 15px;
+
+		.listing {
+			@include font-size(12px);
+			font-weight: 400;
+			line-height: 19px;
+		}
+
+		.detail {
+			@include font-size(12px);
+			color: $secondary-grey;
+		}
+	}
+}
+
+;[screen=bio] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+}
+
+.module[type=bio-page] {
+	padding-top: 40px;
+
+	.headshot-wrap {
+		@include size(160px, 120px);
+		overflow: hidden;
+		margin: 0 auto;
+	}
+
+	.headline {
+
+		.name {
+			@include font-size(19px);
+			color: color(rgb(112, 149, 169), 1);
+			margin: 10px 0;
+			text-align: center;
+			font-weight: 200;
+		}
+
+		.position {
+			@include font-size(14px);
+			text-align: center;
+			margin-bottom: 20px;
+			font-style: italic;
+		}
+	}
+
+	.stats {
+		@include font-size(14px);
+		padding: 0 20px 20px;
+
+		.label {
+			color: rgb(163, 163, 163);
+			text-transform: uppercase;
+			margin-top: 15px;
+		}
+
+		.data {
+			line-height: 16px;
+
+			.last {
+				padding-bottom: 20px;
+			}
+		}
+	}
+
+	.contact {
+		padding: 20px;
+		text-align: center;
+
+		.title {
+			text-align: left;
+			padding: 0 0 20px;
+		}
+
+		.email a {
+			@include font-size(15px);
+			color: rgb(112, 149, 169);
+			text-decoration: none;
+		}
+	}
+
+	.bio-text {
+		padding: 20px;
+
+		.title {
+			padding: 0 20px;
+			text-align: left;
+		}
+
+		.bio-highlight-wrap {
+			padding: 50px 30px;
+			background-image: url('../images/quote_overlay.png');
+			background-repeat: no-repeat;
+			background-position: -4px -25px;
+			background-size: 122px;
+		}
+
+		.bio-highlight-text {
+			@include font-size(20px);
+			color: rgb(112, 149, 169);
+		}
+	}
+};[screen=contact] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.title {
+			color: white(1);
+			vertical-align: middle;
+			text-align: center;
+		}
+	}
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.career-wrap,
+	.advisory-wrap {
+		padding: 25px 20px;
+	}
+
+	.name {
+		font-weight: 500;
+		margin-bottom: 4px;
+	}
+
+	.phone {
+		@include font-size(14px);
+		margin-bottom: 8px;
+
+		.phone-number {
+			padding-right: 5px;
+		}
+
+		.label {
+			@include font-size(12px);
+			color: rgb(179, 179, 179);
+			text-transform: uppercase;
+		}
+	}
+}
+
+.module[type=financial-advisory],
+.module[type=postal] {
+	p {
+		padding-top: 0;
+	}
+}
+
+
+;;;[screen=investor-relations] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+}
+
+.module[type=stock-price] {
+
+	.datetime {
+		@include font-size(12px);
+		padding-bottom: 5px;
+	}
+
+	.ticker-name {
+		@include font-size(24px);
+		padding-bottom: 30px;
+	}
+
+	.stock-price {
+		padding-bottom: 15px;
+
+		.current-price {
+			@include font-size(55px);
+			display: inline;
+			font-weight: 600;
+		}
+
+		.change {
+			display: inline;
+		}
+	}
+
+	.high {
+		padding-bottom: 3px;
+	}
+
+	.daily-record {
+		@include font-size(12px);
+	}
+}
+
+.module[type=investor-kit] {
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.investor-kit-wrap {
+		padding: 25px 20px;
+	}
+}
+
+.module[type=announcements] {
+	padding: 10px;
+
+	.title {
+		padding: 0 0 25px;
+	}
+
+	.announcement-wrap {
+		border: 1px solid rgb(212, 212, 212);
+		padding: 10px;
+	}
+
+	.announcement-wrap:not(:last-of-type) {
+		margin-bottom: 10px;
+	}
+
+	.date {
+		@include font-size(14px);
+		font-style: italic;
+		padding-bottom: 5px;
+	}
+
+	.exceprt {
+		@include font-size(12px);
+		line-height: 14px;
+	}
+};;;[screen=news] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+}
+
+.module[type=news] {
+	padding: 10px;
+
+	.title {
+		padding: 0 0 25px;
+	}
+
+	.news-item-wrap {
+		border: 1px solid rgb(212, 212, 212);
+		padding: 10px;
+	}
+
+	.news-item-wrap:not(:last-of-type) {
+		margin-bottom: 10px;
+	}
+
+	.date {
+		@include font-size(14px);
+		font-style: italic;
+		padding-bottom: 5px;
+	}
+
+	.exceprt {
+		@include font-size(12px);
+		line-height: 14px;
+	}
+}
+;[screen=new-york] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+		font-style: normal;
+	}
+}
+
+.module[type=key-contact] {
+	.title {
+		text-align: left;
+		padding-left: 20px;
+		font-style: normal;
+	}
+
+	.headshot-wrap {
+		@include size(100px);
+		overflow: hidden;
+		border-radius: 50%;
+		margin: 0 auto;
+	}
+
+	.name {
+		@include font-size(19px);
+		color: color(rgb(112, 149, 169), 1);
+		margin: 10px 0;
+		text-align: center;
+		font-weight: 200;
+	}
+
+	.position {
+		@include font-size(14px);
+		text-align: center;
+		margin-bottom: 20px;
+		font-style: italic;
+	}
+}
+
+.module[type=jobs] {
+	.title {
+		text-align: center;
+		padding: 20px;
+		border: 1px solid black(1);
+		background-color: rgb(166, 166, 166);
+	}
+
+	.job-wrap {
+		padding: 25px 20px;
+		border: 1px solid black(1);
+		text-align: center;
+		background: rgb(242, 240, 240);
+
+		p {
+			padding-top: 0;
+		}
+
+		.contract {
+			font-style: italic;
+		}
+	}
+};[screen=offices] {
+	header {
+		padding-top: 60px;
+
+		.header-image {
+			@include size(100%, 102px);
+			position: relative;
+			background-image: url('/images/offices-header.png');
+			background-repeat: no-repeat;
+			background-size: 340px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			padding: 20px 5px;
+		}
+	}
+}
+
+
+.office-page {
+
+	.offices-header {
+
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: rgb(255, 255, 255);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: rgb(255, 255, 255);
+		}
+	}
+
+}
+
+.module[type=office-list] {
+	ul {
+		color: $link-color;
+		padding: 0 20px;
+		line-height: 36px;
+	}
+}
+
+.module[type=office-contact] {
+
+	.city {
+		@include font-size(20px);
+		text-align: center;
+		padding: 20px 0;
+	}
+
+	.contact-wrap {
+		padding: 5px 20px;
+
+		.title {
+			text-align: left;
+			padding: 0;
+
+			&:after {
+				@include size(20px);
+				content: '';
+				display: inline-block;
+				background-image: url('/images/external_link.png');
+				background-repeat: no-repeat;
+				background-size: 20px;
+				vertical-align: middle;
+				margin-left: 5px;
+			}
+		}
+
+		.address {
+			padding-bottom: 10px;
+			font-weight: 200;
+		}
+	}
+
+	.get-directions {
+		@include font-size(18px);
+		font-weight: 300;
+		background: none;
+		border: none;
+		padding-bottom: 20px;
+		padding-left: 0;
+
+		&:before {
+			content: '';
+			background-image: url('/images/directions-pin.png');
+			background-repeat: no-repeat;
+			background-size: 20px;
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			padding-right: 3px;
+		}
+	}
+
+	.contact-wrap:last-of-type {
+		padding-bottom: 20px;
+	}
+
+	.phone-button {
+		margin-left: 0;
+	}
+};[screen=our-firm] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+}
+
+.module[type=people] {
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+}
+
+.module[type=by-the-numbers],
+.module[type=key-information] {
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+};;;;;;;

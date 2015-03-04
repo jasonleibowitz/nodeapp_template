@@ -1,0 +1,91 @@
+[screen=new-york] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+		font-style: normal;
+	}
+}
+
+.module[type=key-contact] {
+	.title {
+		text-align: left;
+		padding-left: 20px;
+		font-style: normal;
+	}
+
+	.headshot-wrap {
+		@include size(100px);
+		overflow: hidden;
+		border-radius: 50%;
+		margin: 0 auto;
+	}
+
+	.name {
+		@include font-size(19px);
+		color: color(rgb(112, 149, 169), 1);
+		margin: 10px 0;
+		text-align: center;
+		font-weight: 200;
+	}
+
+	.position {
+		@include font-size(14px);
+		text-align: center;
+		margin-bottom: 20px;
+		font-style: italic;
+	}
+}
+
+.module[type=jobs] {
+	.title {
+		text-align: center;
+		padding: 20px;
+		border: 1px solid black(1);
+		background-color: rgb(166, 166, 166);
+	}
+
+	.job-wrap {
+		padding: 25px 20px;
+		border: 1px solid black(1);
+		text-align: center;
+		background: rgb(242, 240, 240);
+
+		p {
+			padding-top: 0;
+		}
+
+		.contract {
+			font-style: italic;
+		}
+	}
+}

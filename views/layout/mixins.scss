@@ -1,0 +1,261 @@
+// Prefixes a property name with an arbitrary number of prefixes
+// *** Valid Usage ***
+// prefix(<property>, <value>, prefix1, ..., prefixN)
+@mixin prefix($property, $value, $pre...) {
+  @each $val in $pre { -#{$val}-#{$property}: $value; }
+  #{$property}: $value;
+}
+
+
+// Mixes in the proper z-index value based on the $z-layers map
+// *** Valid Usage ***
+// z-index(<$key in $z-layers>)
+@mixin z-index($key) {
+	@if map-has-key($z-layers, $key) {
+		z-index: map-get($z-layers, $key);
+	} @else {
+		@warn "Unknown `#{$key}` in $z-layers.";
+	}
+}
+
+
+// Unpacks and mixes in an entire map as css properties
+// Doubles-back on @select to make use of rem-prop mixin expansion
+// *** Valid Usage ***
+// unpack(<map>)
+@mixin unpack($map) {
+  @include select($map, map-keys($map)...);
+}
+
+
+// Selects properties to mixin from the specified map
+// *** Valid Usage ***
+// Default Properties : select(<map>) == select(<map>, default)
+// All Propeties      : select(<map>, all) == unpack(<map>)
+// Select Properties  : select(<map>, prop1, ..., propN)
+@mixin select($var, $props...) {
+
+	// A list of default properties to use when default is specified or no properties are specified
+	$default-props  : (color, font-size);
+
+	// A list of properties that should be converted to rems via @font-size when mixed in
+	$rem-props      : (font-size, line-height);
+
+	$prop-count     : length($props);								// The number of properties sent
+	$first-prop     : if($prop-count > 0, nth($props, 1), null);	// Gets the first property in $props or null
+
+	// The first property is "all", synonym for @unpack
+	@if ($first-prop == all) {
+
+		@include unpack($var);
+
+	// The first property is "default", or there are no properties
+	// Call select with the default subset of props
+	} @else if ($first-prop == default) or ($prop-count == 0) {
+
+		@include select($var, $default-props...);
+
+	// The property list is anything else
+	} @else {
+
+		@each $prop in $props {
+
+			@if map-has-key($var, $prop) {
+
+				$val: map-get($var, $prop);
+
+				// This property should be in rems, mix it in with @font-size
+				@if index($rem-props, $prop) {
+
+					@include rem($prop, $val);
+
+				// This is a standard property, output it as it is
+				} @else {
+
+					#{$prop}: $val;
+
+				}
+
+			} @else {
+				@warn "Unknown `#{$prop}` in $var.";
+			}
+
+		}
+
+	}
+
+}
+
+// An convenience method, extended from @select
+// Uses the exact same syntax as @select, but the first argument is assumed to be a member of the $styleguide map
+@mixin style($var, $props...) {
+	@include select(map-get($styleguide, $var), $props...);
+}
+
+
+@mixin border-radius($radius: 5px) {
+	@include prefix(border-radius, $radius, moz, webkit, khtml);
+	@include prefix(background-clip, padding-box, moz, webkit);
+}
+
+
+@mixin box-shadow($x: 5px, $y: 5px, $blur: 10px, $spread: 10px, $color: #000) {
+	@include prefix(box-shadow, $x $y $blur $spread $color, webkit, moz);
+	 $iecolor: '#' + red($color) + green($color) + blue($color);
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$x}, OffY=#{$y}, Color='#{$iecolor}');
+	-ms-filter: quote(progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$x}, OffY=#{$y}, Color='#{$iecolor}'));
+}
+
+// Converts a property in px to rems based on a base value
+// Includes a px value fallback for older browsers
+@mixin rem($property, $pxval: 16px, $base : 10px){
+	#{$property}: $pxval;
+	#{$property}: ($pxval / $base) * 1rem;
+}
+
+// Shorthand for rem() where $property = font-size
+@mixin font-size($pxval: 16px, $base : 10px) {
+	  @include rem(font-size, $pxval, $base);
+}
+
+// Shorthand for rem() where $property = line-height
+@mixin line-height($pxval: 16px, $base : 10px) {
+	  @include rem(line-height, $pxval, $base);
+}
+
+
+// Simplifies setting multiple paddings without overwriting current padding values
+
+// Allows for the setting of properties': top, right, bottom, left parameters without overriding the others
+@mixin pos($property, $top: null, $right: null, $bottom: null, $left: null){
+	#{$property}-top	: $top;
+	#{$property}-right	: $right;
+	#{$property}-bottom	: $bottom;
+	#{$property}-left	: $left;
+}
+
+// Convenience functions based on @pos
+@mixin padding($args...){ @include pos(padding, $args...); }
+@mixin margin($args...){ @include pos(margin, $args...); }
+@mixin border($args...){ @include pos(border, $args...); }
+
+
+
+// Centers an element with block and auto-margin
+@mixin center-block() {
+ 	display			: block;
+	margin-left		: auto;
+    margin-right	: auto;
+}
+
+// Centers an element (with defined height) vertically
+@mixin center-vert($height) {
+    position	: absolute;
+    top			: 50%;
+    height		: $height;
+    margin-top	: -($height / 2);
+}
+
+// Centers an element (with unknown height) vertically
+@mixin center-vert-dynamic {
+    position	: relative;
+    top			: 50%;
+    @include prefix(transform, translateY(-50%), webkit, ms);
+}
+
+// Centers an element horizontally and vertically
+// Must have a parent with position: (relative, absolute)
+@mixin center-both {
+    position	: absolute;
+    top			: 50%;
+    left		: 50%;
+    @include prefix(transform, translate(-50%, -50%), webkit, ms);
+}
+
+
+// Simplifies decalaring a position and edge values all at once
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null) {
+    position	: $type;
+    top			: $top;
+    right		: $right;
+    bottom		: $bottom;
+    left		: $left;
+}
+
+// Simplifies setting width and height at the same time, or with one value
+@mixin size($width, $height: $width) {
+    width 	: $width;
+    height 	: $height;
+}
+
+
+@mixin clearfix {
+    *zoom: 1;
+
+    &:before, &:after {
+        content: ' ';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+// Hides the text within an element
+@mixin hide-text{
+	color		: transparent;
+    overflow	: hidden;
+    text-indent	: -9000px;
+    display		: block;
+}
+
+// Hides all of an element's children
+@mixin hide-children(){
+	color: transparent;
+	* {
+		display: none;
+	}
+}
+
+// Mixes in an opacity property with IE fallback
+@mixin opacity($opacity) {
+    opacity		: $opacity;
+    -ms-filter	: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity * 100})";
+}
+
+
+// Mixes in color properties for background usage (with fallback)
+@mixin bg-color($color, $opacity: 1) {
+    background: $color;
+    background: color($color, $opacity);
+}
+
+
+// Accepts any color (hex, hsl, rgb[a], named), and opacity into rgba
+@function color($color, $opacity: 1) {
+    @return rgba($color, $opacity);
+}
+
+
+// Convenience functions for various colors
+@function black($opacity: 1){ @return color(#000, $opacity); }
+@function white($opacity: 1){ @return color(#fff, $opacity); }
+@function red($opacity: 1){ @return color(rgb(255, 0, 0), $opacity); }
+@function green($opacity: 1){ @return color(rgb(0, 255, 0), $opacity); }
+@function blue($opacity: 1){ @return color(rgb(0, 0, 255), $opacity); }
+
+
+// Created a font face declaration block given a name and file path
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
+  @font-face {
+    font-family	: quote($font-name);
+    src			: url($file-name + '.eot');
+    src			: url($file-name + '.eot?#iefix') format('embedded-opentype'),
+		          url($file-name + '.woff') format('woff'),
+		          url($file-name + '.ttf') format('truetype'),
+		          url($file-name + '.svg##{$font-name}') format('svg');
+    font-weight	: $weight;
+    font-style	: $style;
+  }
+}

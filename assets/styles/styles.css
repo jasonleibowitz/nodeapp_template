@@ -1,0 +1,992 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-text-size-adjust: none;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img, embed, object, video {
+  max-width: 100%;
+}
+
+option[value=''],
+option[value='null'] {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.clear {
+  *zoom: 1;
+}
+.clear:before, .clear:after {
+  content: ' ';
+  display: table;
+}
+.clear:after {
+  clear: both;
+}
+
+.hide-children {
+  color: transparent;
+}
+.hide-children * {
+  display: none;
+}
+
+.navbar {
+  z-index: 9999999999;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  position: fixed;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  width: 100%;
+  text-align: center;
+}
+.navbar .hamburger {
+  width: 50px;
+  height: 50px;
+  background-image: url("/images/hamburger_menu.png");
+  background-repeat: no-repeat;
+  background-size: 50px;
+  position: absolute;
+  top: 10px;
+}
+.navbar .headline-text {
+  color: black;
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: 200;
+}
+.navbar .search-icon {
+  width: 40px;
+  height: 40px;
+  background-image: url("/images/search.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+footer {
+  width: 100%;
+  height: 200px;
+  background-color: #22283c;
+  color: white;
+  line-height: 200px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+body,
+.navbar {
+  max-width: 320px;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 100%;
+}
+
+body {
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 16px;
+  line-height: 1.6rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  color: black;
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 16px;
+  line-height: 1.6rem;
+  font-weight: 200;
+}
+
+h2 {
+  color: black;
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: 200;
+  font-style: italic;
+}
+
+h3 {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+h4 {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+p {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 24px;
+  line-height: 2.4rem;
+}
+
+p:not(:first-of-type) {
+  padding-top: 20px;
+}
+
+a {
+  color: #66acff;
+  text-decoration: none;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 24px;
+  line-height: 2.4rem;
+}
+
+ul {
+  list-style: disc outside none;
+  padding-left: 10px;
+}
+ul > li {
+  padding: 5px 0;
+}
+
+.module {
+  background: white;
+  background: white;
+  margin: 0 10px 10px;
+}
+.module .title {
+  text-align: center;
+  padding: 25px 0 0;
+  line-height: 29px;
+}
+.module .content {
+  padding: 20px;
+}
+
+hr {
+  border-color: #ececec;
+  border-style: solid;
+}
+hr .partial {
+  width: 90%;
+}
+
+.module[type=contacts] .title {
+  text-align: left;
+  padding-left: 20px;
+}
+.module[type=contacts] .contact-wrap {
+  padding: 25px 20px;
+}
+.module[type=contacts] .name {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.module[type=contacts] .contact-title {
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 200;
+  margin-bottom: 8px;
+  color: #b3b3b3;
+}
+.module[type=contacts] .phone {
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+.module[type=contacts] .phone .phone-number {
+  padding-right: 5px;
+}
+.module[type=contacts] .phone .label {
+  font-size: 12px;
+  font-size: 1.2rem;
+  color: #b3b3b3;
+  text-transform: uppercase;
+}
+
+.module[type="news"] {
+  padding-bottom: 25px;
+}
+.module[type="news"] .title {
+  text-align: left;
+  padding-left: 20px;
+}
+.module[type="news"] .news-wrap {
+  padding: 20px;
+}
+.module[type="news"] .news-wrap .icon {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background: url("/images/pdf-icon.png");
+  background-repeat: no-repeat;
+  background-size: 50px;
+  float: left;
+  margin-right: 15px;
+}
+.module[type="news"] .news-wrap .news-item {
+  display: inline;
+}
+.module[type="news"] .news-wrap .news-item .news-title {
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 15px;
+}
+.module[type="news"] .news-wrap .news-item .detail {
+  font-size: 12px;
+  font-size: 1.2rem;
+  color: #929292;
+  text-transform: uppercase;
+  display: inline;
+}
+.module[type="news"] .news-wrap .news-item .type {
+  display: inline;
+}
+.module[type="news"] .news-wrap .news-item .date {
+  display: inline;
+}
+
+.button {
+  background-color: #22283c;
+  height: 40px;
+  line-height: 40px;
+  line-height: 4rem;
+  vertical-align: middle;
+  color: white;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wide-button {
+  background-color: #22283c;
+  height: 40px;
+  line-height: 40px;
+  line-height: 4rem;
+  vertical-align: middle;
+  color: white;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.phone-button {
+  background-color: #22283c;
+  height: 40px;
+  line-height: 40px;
+  line-height: 4rem;
+  vertical-align: middle;
+  color: white;
+  width: 80%;
+  text-align: center;
+  padding: 0 20px;
+  margin-left: 20px;
+  text-align: left;
+}
+.phone-button:before {
+  width: 30px;
+  height: 30px;
+  background-image: url("/images/phone_icon.png");
+  content: '';
+  background-size: 30px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  line-height: 40px;
+  vertical-align: middle;
+  margin-left: 0;
+}
+
+@media print {
+  a:after {
+    content: " [" attr(href) "] ";
+  }
+}
+[screen=home] header .header-image {
+  width: 100%;
+  height: 205px;
+  position: relative;
+  background-image: url("/images/nyc_skyline.jpg");
+  background-repeat: no-repeat;
+  background-size: 570px;
+  background-position: 25%;
+}
+[screen=home] header .header-text {
+  position: relative;
+  top: 50%;
+  width: 85%;
+  margin: 0 auto;
+}
+[screen=home] header .location-city {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: 200;
+  color: white;
+  vertical-align: middle;
+  text-align: left;
+}
+[screen=home] header .location-coordinates {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  background-color: #d1d1d1;
+  padding-top: 10px;
+}
+
+.module[type=about] .content {
+  text-align: center;
+}
+
+.module[type=directions] h4 {
+  padding: 5px 0;
+}
+.module[type=directions] .content p {
+  margin-bottom: 20px;
+}
+.module[type=directions] .address p {
+  text-align: center;
+  line-height: normal;
+  font-weight: 200;
+  margin-bottom: 0;
+}
+
+.module[type=bio] .name {
+  font-size: 19px;
+  font-size: 1.9rem;
+  margin: 10px 0;
+  text-align: center;
+  color: #7095a9;
+  font-weight: 200;
+}
+.module[type=bio] .position {
+  font-size: 14px;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.module[type=bio] .headshot-wrap {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  margin: 25px auto;
+  overflow: hidden;
+}
+.module[type=bio] .content {
+  text-align: center;
+}
+
+.module[type=featured-jobs] .title {
+  text-align: left;
+  padding-left: 20px;
+}
+.module[type=featured-jobs] .featured-job-wrap {
+  line-height: 16px;
+  margin-bottom: 15px;
+}
+.module[type=featured-jobs] .featured-job-wrap .listing {
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 19px;
+}
+.module[type=featured-jobs] .featured-job-wrap .detail {
+  font-size: 12px;
+  font-size: 1.2rem;
+  color: #929292;
+}
+
+[screen=bio] header .header-image {
+  width: 100%;
+  height: 205px;
+  position: relative;
+  background-image: url("/images/nyc_skyline.jpg");
+  background-repeat: no-repeat;
+  background-size: 570px;
+  background-position: 25%;
+}
+[screen=bio] header .header-text {
+  position: relative;
+  top: 50%;
+  width: 85%;
+  margin: 0 auto;
+}
+[screen=bio] header .location-city {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: 200;
+  color: white;
+  vertical-align: middle;
+  text-align: left;
+}
+[screen=bio] header .location-coordinates {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+}
+
+.module[type=bio-page] {
+  padding-top: 40px;
+}
+.module[type=bio-page] .headshot-wrap {
+  width: 160px;
+  height: 120px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.module[type=bio-page] .headline .name {
+  font-size: 19px;
+  font-size: 1.9rem;
+  color: #7095a9;
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 200;
+}
+.module[type=bio-page] .headline .position {
+  font-size: 14px;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.module[type=bio-page] .stats {
+  font-size: 14px;
+  font-size: 1.4rem;
+  padding: 0 20px 20px;
+}
+.module[type=bio-page] .stats .label {
+  color: #a3a3a3;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+.module[type=bio-page] .stats .data {
+  line-height: 16px;
+}
+.module[type=bio-page] .stats .data .last {
+  padding-bottom: 20px;
+}
+.module[type=bio-page] .contact {
+  padding: 20px;
+  text-align: center;
+}
+.module[type=bio-page] .contact .title {
+  text-align: left;
+  padding: 0 0 20px;
+}
+.module[type=bio-page] .contact .email a {
+  font-size: 15px;
+  font-size: 1.5rem;
+  color: #7095a9;
+  text-decoration: none;
+}
+.module[type=bio-page] .bio-text {
+  padding: 20px;
+}
+.module[type=bio-page] .bio-text .title {
+  padding: 0 20px;
+  text-align: left;
+}
+.module[type=bio-page] .bio-text .bio-highlight-wrap {
+  padding: 50px 30px;
+  background-image: url("../images/quote_overlay.png");
+  background-repeat: no-repeat;
+  background-position: -4px -25px;
+  background-size: 122px;
+}
+.module[type=bio-page] .bio-text .bio-highlight-text {
+  font-size: 20px;
+  font-size: 2rem;
+  color: #7095a9;
+}
+
+[screen=contact] header .header-image {
+  width: 100%;
+  height: 205px;
+  position: relative;
+  background-image: url("/images/nyc_skyline.jpg");
+  background-repeat: no-repeat;
+  background-size: 570px;
+  background-position: 25%;
+}
+[screen=contact] header .header-text {
+  position: relative;
+  top: 50%;
+  width: 85%;
+  margin: 0 auto;
+}
+[screen=contact] header .title {
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+}
+[screen=contact] .title {
+  text-align: left;
+  padding-left: 20px;
+}
+[screen=contact] .career-wrap,
+[screen=contact] .advisory-wrap {
+  padding: 25px 20px;
+}
+[screen=contact] .name {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+[screen=contact] .phone {
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+[screen=contact] .phone .phone-number {
+  padding-right: 5px;
+}
+[screen=contact] .phone .label {
+  font-size: 12px;
+  font-size: 1.2rem;
+  color: #b3b3b3;
+  text-transform: uppercase;
+}
+
+.module[type=financial-advisory] p,
+.module[type=postal] p {
+  padding-top: 0;
+}
+
+[screen=investor-relations] header .header-image {
+  width: 100%;
+  height: 205px;
+  position: relative;
+  background-image: url("/images/nyc_skyline.jpg");
+  background-repeat: no-repeat;
+  background-size: 570px;
+  background-position: 25%;
+}
+[screen=investor-relations] header .header-text {
+  position: relative;
+  top: 50%;
+  width: 85%;
+  margin: 0 auto;
+}
+[screen=investor-relations] header .location-city {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: 200;
+  color: white;
+  vertical-align: middle;
+  text-align: left;
+}
+[screen=investor-relations] header .location-coordinates {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+}
+
+.module[type=stock-price] .datetime {
+  font-size: 12px;
+  font-size: 1.2rem;
+  padding-bottom: 5px;
+}
+.module[type=stock-price] .ticker-name {
+  font-size: 24px;
+  font-size: 2.4rem;
+  padding-bottom: 30px;
+}
+.module[type=stock-price] .stock-price {
+  padding-bottom: 15px;
+}
+.module[type=stock-price] .stock-price .current-price {
+  font-size: 55px;
+  font-size: 5.5rem;
+  display: inline;
+  font-weight: 600;
+}
+.module[type=stock-price] .stock-price .change {
+  display: inline;
+}
+.module[type=stock-price] .high {
+  padding-bottom: 3px;
+}
+.module[type=stock-price] .daily-record {
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+
+.module[type=investor-kit] .title {
+  text-align: left;
+  padding-left: 20px;
+}
+.module[type=investor-kit] .investor-kit-wrap {
+  padding: 25px 20px;
+}
+
+.module[type=announcements] {
+  padding: 10px;
+}
+.module[type=announcements] .title {
+  padding: 0 0 25px;
+}
+.module[type=announcements] .announcement-wrap {
+  border: 1px solid #d4d4d4;
+  padding: 10px;
+}
+.module[type=announcements] .announcement-wrap:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+.module[type=announcements] .date {
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-style: italic;
+  padding-bottom: 5px;
+}
+.module[type=announcements] .exceprt {
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 14px;
+}
+
+[screen=news] header .header-image {
+  width: 100%;
+  height: 205px;
+  position: relative;
+  background-image: url("/images/nyc_skyline.jpg");
+  background-repeat: no-repeat;
+  background-size: 570px;
+  background-position: 25%;
+}
+[screen=news] header .header-text {
+  position: relative;
+  top: 50%;
+  width: 85%;
+  margin: 0 auto;
+}
+[screen=news] header .location-city {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: 200;
+  color: white;
+  vertical-align: middle;
+  text-align: left;
+}
+[screen=news] header .location-coordinates {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+}
+
+.module[type=news] {
+  padding: 10px;
+}
+.module[type=news] .title {
+  padding: 0 0 25px;
+}
+.module[type=news] .news-item-wrap {
+  border: 1px solid #d4d4d4;
+  padding: 10px;
+}
+.module[type=news] .news-item-wrap:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+.module[type=news] .date {
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-style: italic;
+  padding-bottom: 5px;
+}
+.module[type=news] .exceprt {
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 14px;
+}
+
+[screen=new-york] header .header-image {
+  width: 100%;
+  height: 205px;
+  position: relative;
+  background-image: url("/images/nyc_skyline.jpg");
+  background-repeat: no-repeat;
+  background-size: 570px;
+  background-position: 25%;
+}
+[screen=new-york] header .header-text {
+  position: relative;
+  top: 50%;
+  width: 85%;
+  margin: 0 auto;
+}
+[screen=new-york] header .location-city {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: 200;
+  color: white;
+  vertical-align: middle;
+  text-align: left;
+}
+[screen=new-york] header .location-coordinates {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+}
+[screen=new-york] .title {
+  text-align: left;
+  padding-left: 20px;
+  font-style: normal;
+}
+
+.module[type=key-contact] .title {
+  text-align: left;
+  padding-left: 20px;
+  font-style: normal;
+}
+.module[type=key-contact] .headshot-wrap {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.module[type=key-contact] .name {
+  font-size: 19px;
+  font-size: 1.9rem;
+  color: #7095a9;
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 200;
+}
+.module[type=key-contact] .position {
+  font-size: 14px;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.module[type=jobs] .title {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: #a6a6a6;
+}
+.module[type=jobs] .job-wrap {
+  padding: 25px 20px;
+  border: 1px solid black;
+  text-align: center;
+  background: #f2f0f0;
+}
+.module[type=jobs] .job-wrap p {
+  padding-top: 0;
+}
+.module[type=jobs] .job-wrap .contract {
+  font-style: italic;
+}
+
+[screen=offices] header {
+  padding-top: 60px;
+}
+[screen=offices] header .header-image {
+  width: 100%;
+  height: 102px;
+  position: relative;
+  background-image: url("/images/offices-header.png");
+  background-repeat: no-repeat;
+  background-size: 340px;
+  background-position: 25%;
+}
+[screen=offices] header .header-text {
+  padding: 20px 5px;
+}
+
+.office-page .offices-header .header-text {
+  position: relative;
+  top: 50%;
+  width: 85%;
+  margin: 0 auto;
+}
+.office-page .offices-header .location-city {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: 200;
+  color: white;
+  vertical-align: middle;
+  text-align: left;
+}
+.office-page .offices-header .location-coordinates {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+}
+
+.module[type=office-list] ul {
+  color: #66acff;
+  padding: 0 20px;
+  line-height: 36px;
+}
+
+.module[type=office-contact] .city {
+  font-size: 20px;
+  font-size: 2rem;
+  text-align: center;
+  padding: 20px 0;
+}
+.module[type=office-contact] .contact-wrap {
+  padding: 5px 20px;
+}
+.module[type=office-contact] .contact-wrap .title {
+  text-align: left;
+  padding: 0;
+}
+.module[type=office-contact] .contact-wrap .title:after {
+  width: 20px;
+  height: 20px;
+  content: '';
+  display: inline-block;
+  background-image: url("/images/external_link.png");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.module[type=office-contact] .contact-wrap .address {
+  padding-bottom: 10px;
+  font-weight: 200;
+}
+.module[type=office-contact] .get-directions {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: 300;
+  background: none;
+  border: none;
+  padding-bottom: 20px;
+  padding-left: 0;
+}
+.module[type=office-contact] .get-directions:before {
+  content: '';
+  background-image: url("/images/directions-pin.png");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  padding-right: 3px;
+}
+.module[type=office-contact] .contact-wrap:last-of-type {
+  padding-bottom: 20px;
+}
+.module[type=office-contact] .phone-button {
+  margin-left: 0;
+}
+
+[screen=our-firm] header .header-image {
+  width: 100%;
+  height: 205px;
+  position: relative;
+  background-image: url("/images/nyc_skyline.jpg");
+  background-repeat: no-repeat;
+  background-size: 570px;
+  background-position: 25%;
+}
+[screen=our-firm] header .header-text {
+  position: relative;
+  top: 50%;
+  width: 85%;
+  margin: 0 auto;
+}
+[screen=our-firm] header .location-city {
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-weight: 200;
+  color: white;
+  vertical-align: middle;
+  text-align: left;
+}
+[screen=our-firm] header .location-coordinates {
+  color: black;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+}
+
+.module[type=people] .title {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.module[type=by-the-numbers] ul,
+.module[type=key-information] ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/*# sourceMappingURL=styles.css.map */

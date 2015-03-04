@@ -1,0 +1,23 @@
+Wireframes Left To Do (as of 3/4/15)
+By Jason Leibowitz
+
+- investor relations
+  - sec filings
+  - corporate governance
+  - events
+  - announcements (same as news/announcements)
+- news
+  - lazard in the news
+  - announcements (same as investor relations/announcements)
+- office template
+  - looks different from comp 
+    - includes jobs in ny module
+- our firm
+  - people
+- our perspective
+- services
+  - asset management
+  - financial advisory
+    - service
+    - middle market advisory
+    - middle market service

@@ -1,0 +1,48 @@
+[screen=our-firm] {
+	header {
+		.header-image {
+			@include size(100%, 205px);
+			position: relative;
+			background-image: url('/images/nyc_skyline.jpg');
+			background-repeat: no-repeat;
+			background-size: 570px;
+			background-position: 25%;
+		}
+
+		.header-text {
+			position: relative;
+			top: 50%;
+			width: 85%;
+			margin: 0 auto;
+		}
+
+		.location-city {
+			@include style(h1, font-size, font-weight);
+			color: white(1);
+			vertical-align: middle;
+			text-align: left;
+		}
+
+		.location-coordinates {
+			@include style(h4, all);
+			color: white(1);
+		}
+	}
+}
+
+.module[type=people] {
+
+	.title {
+		text-align: left;
+		padding-left: 20px;
+	}
+}
+
+.module[type=by-the-numbers],
+.module[type=key-information] {
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+}
